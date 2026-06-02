@@ -1745,6 +1745,27 @@ kbd {
     margin-top: 1rem;
 }
 
+/* Sidebar Overlay for Mobile */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(9, 11, 15, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 95;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
     .manage-grid {
@@ -1758,13 +1779,16 @@ kbd {
     }
 
     .sidebar {
-        width: 100vw;
-        height: auto;
+        width: 280px;
+        max-width: 80vw;
+        height: 100vh;
         position: fixed;
-        left: -100vw;
+        left: -280px;
         top: 0;
         bottom: 0;
         transition: left 0.3s ease;
+        z-index: 100;
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.35);
     }
 
     .sidebar.mobile-open {
@@ -1776,7 +1800,7 @@ kbd {
     }
 
     .main-content {
-        height: calc(100vh - var(--header-height));
+        height: 100vh;
     }
 
     .top-header {
@@ -1792,23 +1816,99 @@ kbd {
     }
 
     .flashcard-container {
-        height: 380px;
+        height: 480px;
     }
 
     .options-list-preview {
         grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 12px;
     }
 
-    .form-grid {
-        grid-template-columns: 1fr;
+    .option-preview-item {
+        font-size: 0.85rem;
+        padding: 8px 12px;
     }
 
     .card-face {
-        padding: 20px;
+        padding: 20px 16px;
     }
 
     .question-text {
         font-size: 1.15rem;
+        max-height: 140px;
+        overflow-y: auto;
+    }
+
+    /* Back side specifics on mobile */
+    .answer-box {
+        padding: 12px 16px;
+        margin-bottom: 12px;
+    }
+
+    .answer-text {
+        font-size: 1rem;
+    }
+
+    .explanation-box {
+        padding: 12px;
+        max-height: 100px;
+    }
+
+    .card-footer-actions {
+        gap: 10px;
+    }
+
+    .card-footer-actions .btn {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    /* Shortcuts helper on mobile is useless */
+    .shortcuts-helper {
+        display: none !important;
+    }
+
+    /* Quiz Option buttons adjustments */
+    .quiz-opt-btn {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+
+    .quiz-opt-letter {
+        width: 26px;
+        height: 26px;
+        font-size: 0.9rem;
+    }
+
+    .quiz-question-card {
+        padding: 20px;
+    }
+
+    .quiz-question-text {
+        font-size: 1.15rem;
+        margin-bottom: 20px;
+    }
+
+    /* Quiz Result stats adjustments */
+    .result-card {
+        padding: 24px 16px;
+    }
+
+    .result-stats {
+        gap: 10px;
+    }
+
+    .result-stat-card {
+        padding: 12px 8px;
+    }
+
+    .result-stat-card .val {
+        font-size: 1.2rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
     }
 }
 
