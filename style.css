@@ -524,19 +524,24 @@ body.dark-theme .page-title h1 {
     margin: 40px auto;
     width: 100%;
     max-width: 680px;
-    height: 420px;
+    min-height: 420px;
+    display: flex;
 }
 
 .flashcard {
     width: 100%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
 }
 
 .card-inner {
     position: relative;
     width: 100%;
-    height: 100%;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     transition: transform 0.7s cubic-bezier(0.3, 0.8, 0.4, 1.05);
     transform-style: preserve-3d;
 }
@@ -546,9 +551,8 @@ body.dark-theme .page-title h1 {
 }
 
 .card-face {
-    position: absolute;
+    grid-area: 1 / 1 / 2 / 2;
     width: 100%;
-    height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     border-radius: var(--radius-lg);
@@ -658,8 +662,6 @@ body.dark-theme .page-title h1 {
     font-weight: 600;
     text-align: center;
     color: var(--text-primary);
-    max-height: 180px;
-    overflow-y: auto;
     width: 100%;
 }
 
@@ -708,8 +710,6 @@ body.dark-theme .page-title h1 {
     background-color: var(--bg-tertiary);
     border-radius: var(--radius-md);
     padding: 16px;
-    max-height: 140px;
-    overflow-y: auto;
     border: 1px solid var(--border-color);
 }
 
